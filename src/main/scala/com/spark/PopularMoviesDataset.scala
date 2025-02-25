@@ -1,6 +1,5 @@
 package com.spark
 
-import com.spark.WordCountDataset.Book
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.SparkSession
