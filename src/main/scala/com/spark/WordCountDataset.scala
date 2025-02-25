@@ -19,9 +19,10 @@ object WordCountDataset {
     val spark = SparkSession.builder.config(sc.getConf).getOrCreate()
     import spark.implicits._
 
+    // Read the text file
     val input = spark.read.text("data/book.txt").as[Book]
 
-    val words = input.select(explode(split($"value", "\\W+")).alias("word")).filter($"word"=!="")
+    val words = input.select(explode(split($"value", "\\W+")).alias("word")).filter($"word" =!="")
 
     val lowerCaseWord = words.select(lower($"word").alias("word"))
 
