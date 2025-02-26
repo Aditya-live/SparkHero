@@ -8,6 +8,7 @@ import org.apache.spark.sql.functions.{col, udf}
 
 import scala.io.{Codec, Source}
 object PopularMoviesNicerDataset {
+
   case class Movies(userId: Int, movieId: Int, rating: Int, timestamp: Long)
 
   def loadMovieNames(): Map[Int, String] = {
