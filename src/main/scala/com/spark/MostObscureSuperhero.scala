@@ -41,7 +41,7 @@ object MostObscureSuperhero {
 
     val connections = lines.withColumn("id", split(col("value"), " ")(0))
       .withColumn("connections", size(split(col("value"), " ")) - 1)
-//      .groupBy("id").agg(sum("connections").alias("connections"))
+      .groupBy("id").agg(sum("connections").alias("connections"))
 
     val leastValue = connections.agg(min("connections")).first().getLong(0)
 
