@@ -45,8 +45,10 @@ object MostObscureSuperhero {
 
     val leastValue = connections.agg(min("connections")).first().getLong(0)
 
+    //Filtering least popular super heroes
     val mostObscureSuperheroes = connections.filter($"connections" === leastValue)
 
+    //Join with names dataset to find names of those heroes
     val namesOfMostObscureSuperheroes = mostObscureSuperheroes.joinWith(names, mostObscureSuperheroes("id")===names("id"), "inner")
 
     val values = namesOfMostObscureSuperheroes.map(x=>x._2.name).withColumnRenamed("value","Obscure Superheroes")
